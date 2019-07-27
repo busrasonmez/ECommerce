@@ -21,10 +21,45 @@ namespace ecommerce
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {        //db şeması
             //modelBuilder.Entity<user>().Property(a => a.Email).IsRequired();
+            modelBuilder.Entity<category>().HasData(new category() {
+                Id = 1,
+                Name="Elektronik",
+                Description="Ev elektriğine dair herşey"
 
-    }
-    public DbSet<user> users { get; set; }
+            });
+            modelBuilder.Entity<category>().HasData(new category()
+            {
+                Id = 2,
+                Name = "Beyaz Eşya",
+                Description = "Mutfak elektroniği"
+
+            });
+            modelBuilder.Entity<category>().HasData(new category()
+            {
+                Id = 3,
+                Name = "Tekstil",
+                Description = "Gardrobunuzu biz dolduruyoruz "
+
+            });
+            modelBuilder.Entity<State>().HasData(new State()
+            {
+                Id = 1,
+                Name = "Aktif",
+               
+            });
+            modelBuilder.Entity<State>().HasData(new State()
+            {
+                Id = 2,
+                Name = "Pasif",
+
+            });
+
+
+        }
+        public DbSet<user> users { get; set; }
         public DbSet<address> addresses { get; set; }
+        public DbSet<category> categories { get; set; }
+        public DbSet<State> States { get; set; } 
     }
 }
 

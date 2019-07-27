@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ecommerce;
 
 namespace ecommerce.Migrations
 {
     [DbContext(typeof(ecommercecontext))]
-    partial class ecommercecontextModelSnapshot : ModelSnapshot
+    [Migration("20190727071538_Seed_1")]
+    partial class Seed_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,11 +51,7 @@ namespace ecommerce.Migrations
                         .IsRequired()
                         .HasMaxLength(200);
 
-                    b.Property<int?>("StateId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("StateId");
 
                     b.ToTable("categories");
 
@@ -61,24 +59,6 @@ namespace ecommerce.Migrations
                         new { Id = 1, Description = "Ev elektriğine dair herşey", Name = "Elektronik" },
                         new { Id = 2, Description = "Mutfak elektroniği", Name = "Beyaz Eşya" },
                         new { Id = 3, Description = "Gardrobunuzu biz dolduruyoruz ", Name = "Tekstil" }
-                    );
-                });
-
-            modelBuilder.Entity("ecommerce.Models.State", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("States");
-
-                    b.HasData(
-                        new { Id = 1, Name = "Aktif" },
-                        new { Id = 2, Name = "Pasif" }
                     );
                 });
 
@@ -114,13 +94,6 @@ namespace ecommerce.Migrations
                     b.HasOne("ecommerce.Models.user", "user")
                         .WithMany("addresses")
                         .HasForeignKey("userId");
-                });
-
-            modelBuilder.Entity("ecommerce.Models.category", b =>
-                {
-                    b.HasOne("ecommerce.Models.State", "State")
-                        .WithMany()
-                        .HasForeignKey("StateId");
                 });
 #pragma warning restore 612, 618
         }
