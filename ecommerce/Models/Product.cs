@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace ecommerce.Models
+namespace ECommerce.Models
 {
     public class Product
     {
@@ -22,10 +19,10 @@ namespace ecommerce.Models
 
         [Required]
         public State State { get; set; }
+        public int StateId { get; set; }
 
         [Required]
-        public category Category { get; set; }
-
-
+        public Category Category { get; set; }
+        public int CategoryId { get; set; }
     }
 }

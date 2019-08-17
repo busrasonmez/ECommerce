@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ecommerce.Migrations
+namespace ECommerce.Migrations
 {
-    public partial class category_2 : Migration
+    public partial class Category_2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
-                table: "categories",
+                table: "Categories",
                 maxLength: 200,
                 nullable: false,
                 oldClrType: typeof(string),
@@ -16,7 +16,7 @@ namespace ecommerce.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Description",
-                table: "categories",
+                table: "Categories",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldNullable: true);
@@ -26,14 +26,14 @@ namespace ecommerce.Migrations
         {
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
-                table: "categories",
+                table: "Categories",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldMaxLength: 200);
 
             migrationBuilder.AlterColumn<string>(
                 name: "Description",
-                table: "categories",
+                table: "Categories",
                 nullable: true,
                 oldClrType: typeof(string));
         }

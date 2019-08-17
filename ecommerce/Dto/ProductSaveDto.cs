@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ecommerce.Dto
+﻿namespace ECommerce.DTO
 {
     public class ProductSaveDto
     {
-        public string categoryId { get; set; }
-        public string productName { get; set; }
+        public int CategoryId { get; set; }
+        public string ProductName { get; set; }
+        public string ProductDescription { get; set; }
     }
 }

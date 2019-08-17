@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ecommerce.Migrations
+namespace ECommerce.Migrations
 {
     public partial class Product : Migration
     {

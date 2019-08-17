@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ecommerce.Migrations
+namespace ECommerce.Migrations
 {
     public partial class State : Migration
     {
@@ -9,7 +9,7 @@ namespace ecommerce.Migrations
         {
             migrationBuilder.AddColumn<int>(
                 name: "StateId",
-                table: "categories",
+                table: "Categories",
                 nullable: true);
 
             migrationBuilder.CreateTable(
@@ -36,13 +36,13 @@ namespace ecommerce.Migrations
                 values: new object[] { 2, "Pasif" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_categories_StateId",
-                table: "categories",
+                name: "IX_Categories_StateId",
+                table: "Categories",
                 column: "StateId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_categories_States_StateId",
-                table: "categories",
+                name: "FK_Categories_States_StateId",
+                table: "Categories",
                 column: "StateId",
                 principalTable: "States",
                 principalColumn: "Id",
@@ -52,19 +52,19 @@ namespace ecommerce.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_categories_States_StateId",
-                table: "categories");
+                name: "FK_Categories_States_StateId",
+                table: "Categories");
 
             migrationBuilder.DropTable(
                 name: "States");
 
             migrationBuilder.DropIndex(
-                name: "IX_categories_StateId",
-                table: "categories");
+                name: "IX_Categories_StateId",
+                table: "Categories");
 
             migrationBuilder.DropColumn(
                 name: "StateId",
-                table: "categories");
+                table: "Categories");
         }
     }
 }

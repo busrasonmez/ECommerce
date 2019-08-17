@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ecommerce.Migrations
+namespace ECommerce.Migrations
 {
     public partial class Product_2 : Migration
     {
@@ -18,10 +18,10 @@ namespace ecommerce.Migrations
                 column: "CategoryId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Products_categories_CategoryId",
+                name: "FK_Products_Categories_CategoryId",
                 table: "Products",
                 column: "CategoryId",
-                principalTable: "categories",
+                principalTable: "Categories",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -29,7 +29,7 @@ namespace ecommerce.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Products_categories_CategoryId",
+                name: "FK_Products_Categories_CategoryId",
                 table: "Products");
 
             migrationBuilder.DropIndex(

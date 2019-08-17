@@ -1,4 +1,24 @@
-﻿var ecommerce = {
+﻿var ECommerce = {
+    Helper: {
+        Ajax: function (method, jDto, callback) {
+            var json = JSON.stringify(jDto);
+
+            var data = new Object();
+            data.Method = method;
+            data.Json = json;
+
+            $.ajax({
+                    method: "POST",
+                    url: "/api",
+                    data: "JSON=" + JSON.stringify(data)
+                })
+                .done(function (msg) {
+                    if (callback) {
+                        callback(msg);
+                    }
+                });
+        }
+    },
     Page: {
         Home: {
 
@@ -7,19 +27,36 @@
             Save: function () {
                 var categoryId = $("#CategoryId").val();
                 var productName = $("#ProductName").val();
-                var jsonObj = new Object();
-                jsonObj.categoryId = categoryId;
-                jsonObj.productName = productName;
-                var json = JSON.stringify(jsonObj);
+                var productDescription = $("#ProductDescription").val();
+                var jDto = new Object();
+                jDto.CategoryId = categoryId;
+                jDto.ProductName = productName;
+                jDto.ProductDescription = productDescription;
 
-                $.ajax({
-                    method: "POST",
-                    url: "/api",
-                    data: "JSON=" + json
-                })
-                    .done(function (msg) {
-                        alert("Data Saved: " + msg);
-                    });
+                ECommerce.Helper.Ajax("SaveProduct", jDto);
+            },
+            List: function() {
+                //ajax işi var ok
+                //ajax'ın cevabı gelecek? ok
+                //html'e dolduracak (parse)
+
+                var jDto = new Object();
+                jDto.CategoryId = $("#CategoryId").val();
+
+                ECommerce.Helper.Ajax("ProductsByCategoryId", jDto, ECommerce.Page.Category.Callback_List);
+            },
+            Callback_List: function(data) {
+                console.log(data);
+                var html = "";
+
+                for (var i = 0; i < data.dynamic.length; i++) {
+                    var product = data.dynamic[i];
+                    var productName = product.name;
+
+                    html += "- " + productName + "<br />";
+                }
+
+                $("#Holder-Products").html(html);
             }
         },
         Contact: {
@@ -27,6 +64,6 @@
         },
         Help: {
 
-        },
+        }
     }
 }

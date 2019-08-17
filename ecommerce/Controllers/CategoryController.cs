@@ -1,27 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ecommerce.Models;
+﻿using ECommerce.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
-namespace ecommerce.Controllers
+namespace ECommerce.Controllers
 {
     public class CategoryController : Controller
     {
         [Route("/kategori/{id}")]
         public IActionResult Index(int id)
         {
+            Category category = new Category();
 
-            category category = new category();
-
-
-            using (ecommercecontext ecommercecontext = new ecommercecontext())
+            using (ECommerceContext eCommerceContext = new ECommerceContext())
             {
-                category = ecommercecontext.categories.SingleOrDefault(a => a.Id == id);
-                //select*from categories where Id == 3
+                category = eCommerceContext.Categories.SingleOrDefault(a => a.Id == id);
             }
+
             ViewData["Title"] = category.Name;
+
             return View(category);
         }
     }

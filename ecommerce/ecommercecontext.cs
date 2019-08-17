@@ -1,65 +1,57 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ecommerce.Models;
+﻿using ECommerce.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace ecommerce
+namespace ECommerce
 {
-    public class ecommercecontext : DbContext
+    public class ECommerceContext : DbContext
     {
-        public ecommercecontext()
-    {
+        public ECommerceContext()
+        {
 
-    }
+        }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionBuilder)
-    {    //db bağlantısı
-        dbContextOptionBuilder.UseSqlServer("Server=127.0.0.1;Database=ecommerce;User Id=sa;Password=123;");
-    }
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {        //db şeması
-            //modelBuilder.Entity<user>().Property(a => a.Email).IsRequired();
-            modelBuilder.Entity<category>().HasData(new category() {
+        protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
+        {
+            //DB BAĞLANTISI VB DATABASE INSTANCE'INI İLGİLENDİREN İNCE AYARLAR
+            dbContextOptionsBuilder.UseSqlServer("Server=127.0.0.1;Database=ECommerce;User Id=sa;Password=123;");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //DATABASE ŞEMASI UYGULANIRKEN KULLANILACAK KURAL SETLERİ
+            modelBuilder.Entity<Category>().HasData(new Category() {
                 Id = 1,
-                Name="Elektronik",
-                Description="Ev elektriğine dair herşey"
-
+                Name = "Elektronik",
+                Description = "Ev elektriğine dair herşey."
             });
-            modelBuilder.Entity<category>().HasData(new category()
+            modelBuilder.Entity<Category>().HasData(new Category()
             {
                 Id = 2,
                 Name = "Beyaz Eşya",
-                Description = "Mutfak elektroniği"
-
+                Description = "Mutfak elektroniği."
             });
-            modelBuilder.Entity<category>().HasData(new category()
+            modelBuilder.Entity<Category>().HasData(new Category()
             {
                 Id = 3,
                 Name = "Tekstil",
-                Description = "Gardrobunuzu biz dolduruyoruz "
-
+                Description = "Gardropunuzu biz dolduruyoruz."
             });
             modelBuilder.Entity<State>().HasData(new State()
             {
                 Id = 1,
-                Name = "Aktif",
-               
+                Name = "Aktif"
             });
             modelBuilder.Entity<State>().HasData(new State()
             {
                 Id = 2,
-                Name = "Pasif",
-
+                Name = "Pasif"
             });
-
-
         }
-        public DbSet<user> users { get; set; }
-        public DbSet<address> addresses { get; set; }
-        public DbSet<category> categories { get; set; }
-        public DbSet<State> States { get; set; } 
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<State> States { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }
-

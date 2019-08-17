@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace ecommerce.Models
+namespace ECommerce.Models
 {
-    public class category
+    public class Category
     {
         public int Id { get; set; }
         [Required]
@@ -15,6 +11,5 @@ namespace ecommerce.Models
         [Required]
         public string Description { get; set; }
         public State State { get; set; }
-
     }
 }

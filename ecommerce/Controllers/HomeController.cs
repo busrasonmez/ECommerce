@@ -1,24 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using ecommerce.Models;
+using ECommerce.Models;
+using System.Linq;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace ecommerce.Controllers
+namespace ECommerce.Controllers
 {
     public class HomeController : Controller
     {
         public IActionResult Index()
         {
-            using (ecommercecontext ecommercecontext = new ecommercecontext())
-            {
-                List<user> Users = ecommercecontext.users.Include(a=> a.addresses).ToList();
-                List<address> addresses = ecommercecontext.addresses.Include(a => a.user).ToList();
-            }  
-            return View(); 
-        }      
+            ViewData["Title"] = "HOŞGELDİNİZ!";
+            return View();
+        }
+
+        public IActionResult Help()
+        {
+            ViewData["Title"] = "Yardım Masası!";
+            return View();
+        }
     }
 }
